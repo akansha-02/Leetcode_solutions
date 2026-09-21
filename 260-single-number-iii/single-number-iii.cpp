@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        long long xr=0;
+        for(int x:nums){
+            xr^=x;
+        }
+
+        long long diff=xr & (-xr);
+
+        int a=0,b=0;
+
+        for(int x:nums){
+            if(x&diff) a^=x;
+            else b^=x;
+        }
+        return {a,b};
+    }
+};
